@@ -14,8 +14,13 @@ export default function Home() {
 
   // executado quando o componente é carregado apenas porque não tem variável sendo controlada []
   useEffect( () => {
-    fetch('http://localhost:3333/posts')
-    
+    fetch('http://localhost:3333/posts') // vai no servidor
+    .then(response => { // espera a resposta do servidor
+      response.json() // transforma em json
+      .then( data => { // espera transformar a resposta em json
+        setPosts(data) // atualiza vetor de posts
+      })
+    })
   }, [])
 
   return (

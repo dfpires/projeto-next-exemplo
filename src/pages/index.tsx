@@ -1,4 +1,5 @@
 import {GetServerSideProps} from 'next'
+import Posts from './posts'
 
 interface Post { // representa 1 post
   id: string;
@@ -9,10 +10,15 @@ interface Posts { // representa vetor de posts
   posts: Post[]
 }
 
-export default function Home() {
+export default function Home({posts}: Posts) {
   return (
     <div>
-    
+      <h1> Posts </h1>
+      <ul>
+        {posts.map( post => (
+          <li key={post.id}> {post.title} </li>
+        ))}
+      </ul>
     </div>
   )
 }

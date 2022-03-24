@@ -64,7 +64,7 @@ export const getStaticPaths:GetStaticPaths = async() => {
     // retorno da função
     return {
         paths: [], // não gera as páginas
-        // não gera o conteúdo das páginas, apenas no primeiro acesso
+        // não gera páginas, apenas no primeiro acesso
         // inicia a geração de cada página estática para cada post
         fallback: true // false - retorna 404 quando não tem a página
         // true - cria página automaticamente

@@ -12,6 +12,9 @@ interface CommentArray {
 
 export default function Post({comments}: CommentArray){
     const router = useRouter()
+    if(router.isFallback) { // estiver como true
+        return <p> Loading ... </p>
+    }
     return (
         <>
             <h1> Post {router.query.id}</h1>
@@ -60,7 +63,9 @@ export const getStaticPaths:GetStaticPaths = async() => {
         })
     // retorno da função
     return {
-        paths: paths, // inicia a geração de cada página estática para cada post
-        fallback: false // retorna 404 quando não tem a página
+        paths, // não gera as páginas, apenas no primeiro acesso
+        // inicia a geração de cada página estática para cada post
+        fallback: true // false - retorna 404 quando não tem a página
+        // true - cria página automaticamente
     }
 }

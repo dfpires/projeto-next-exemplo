@@ -51,19 +51,20 @@ export const getStaticProps: GetStaticProps<CommentArray> = async(context) => {
 // recupera todos os posts
 export const getStaticPaths:GetStaticPaths = async() => {
     // vamos obter os posts
-    const response = await fetch(`http://localhost:3333/posts`)
-    const posts = await response.json()
+    //const response = await fetch(`http://localhost:3333/posts`)
+    //const posts = await response.json()
     // a variável paths vai conter todos os ids de todos os posts
-    const paths = posts.map( post => {
-        return {
-                params: {
-                    id: String(post.id) // chama getStaticProps
-                }
-            }
-        })
+    //const paths = posts.map( post => {
+    //    return {
+    //            params: {
+    //                id: String(post.id) // chama getStaticProps
+    //            }
+    //        }
+    //    })
     // retorno da função
     return {
-        paths, // não gera as páginas, apenas no primeiro acesso
+        paths: [], // não gera as páginas
+        // não gera o conteúdo das páginas, apenas no primeiro acesso
         // inicia a geração de cada página estática para cada post
         fallback: true // false - retorna 404 quando não tem a página
         // true - cria página automaticamente

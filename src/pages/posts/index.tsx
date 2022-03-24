@@ -8,8 +8,17 @@ interface Posts { // representa vetor de posts
     posts: Post[]
 }
 
-export default function Posts(){
-    return <h1> Posts </h1>
+export default function Posts({posts}: Posts){
+    return (
+        <div>
+            <h1> Posts </h1>
+                <ul>
+                {posts.map( post => (
+                    <li key={post.id}> {post.title} </li>
+                ))}
+            </ul>
+    </div>
+    )
 }
 
 export const getStaticProps: GetStaticProps<Posts> = async() => {
@@ -18,6 +27,7 @@ export const getStaticProps: GetStaticProps<Posts> = async() => {
   return {
     props: {
       posts // posts vai para o componente
-    }
+    },
+    revalidate: 5000
   }
 }

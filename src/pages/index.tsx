@@ -1,13 +1,14 @@
 import {GetServerSideProps} from 'next'
 import Posts from './posts'
 import SEO from '../components/SEO'
+import styles from '../styles/home.module.scss'
 
 export default function Home() {
   return (
     <>
       <SEO title="Dev News" excludeTitleSuffix/>
-      <main>
-        <section>
+      <main className={styles.content}>
+        <section className={styles.section}>
           <span> Olá Dev ! </span>
           <h1>
             Bem-vindo e bem-vinda <br/>
